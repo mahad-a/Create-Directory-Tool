@@ -62,10 +62,11 @@ def create_structure_from_file(file_path, root='.'):
             with open(target_path, 'w') as f:
                 pass  # Create an empty file
 
-
 if __name__ == "__main__":
-    # ! pass file explorer structure as either a string for small designs
-    # ! or a text file for larger ones
+    # Specify the root directory and the structure
+    root = r"D:\PersonalProjects\file_tool\Unknown"
+    
+    # Example structure as a string
     structure = """
     media-tracker/
         backend/
@@ -77,6 +78,11 @@ if __name__ == "__main__":
         docker-compose.yml
         README.md
     """
-    structure_file = 'structure.txt'
-    create_structure_from_file(structure_file)
-    create_structure(structure)
+    
+    # If you want to read from a file instead, uncomment the following lines:
+    # structure_file = 'structure.txt'
+    # create_structure_from_file(structure_file, root=root)
+    
+    # Create the structure
+    create_structure(structure) # creates the structure in the current folder
+    create_structure(structure, root=root) # creates the structure in a defined 

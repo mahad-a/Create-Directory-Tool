@@ -1,0 +1,24 @@
+media-tracker/
+    backend/
+        user-service/
+        media-service/
+        recommendation-service/
+        review-service/
+        notification-service/
+    frontend/
+        public/
+        src/
+        Dockerfile
+        package.json
+    k8s/
+        user-service/
+        media-service/
+        recommendation-service/
+        review-service/
+        notification-service/
+        ingress.yaml
+    .github/
+        workflows/
+            ci-cd-pipeline.yml
+    docker-compose.yml
+    README.md
