@@ -62,27 +62,3 @@ def create_structure_from_file(file_path, root='.'):
             with open(target_path, 'w') as f:
                 pass  # Create an empty file
 
-if __name__ == "__main__":
-    # Specify the root directory and the structure
-    root = r"D:\PersonalProjects\file_tool\Unknown"
-    
-    # Example structure as a string
-    structure = """
-    media-tracker/
-        backend/
-        frontend/
-        k8s/
-        .github/
-            workflows/
-                ci-cd-pipeline.yml
-        docker-compose.yml
-        README.md
-    """
-    
-    # If you want to read from a file instead, uncomment the following lines:
-    # structure_file = 'structure.txt'
-    # create_structure_from_file(structure_file, root=root)
-    
-    # Create the structure
-    create_structure(structure) # creates the structure in the current folder
-    create_structure(structure, root=root) # creates the structure in a defined 
