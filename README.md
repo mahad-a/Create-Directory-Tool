@@ -1,11 +1,11 @@
 # Directory and File Structure Creator
 
-This script allows you to create a directory and file structure based on a given input. You can provide the structure as a string for small designs or as a text file for larger ones. The script will parse the structure and create the corresponding directories and files.
+This application allows you to create a directory and file structure based on a given input through a graphical user interface (GUI). You can provide the structure as a string for small designs or as a text file for larger ones. The application will parse the structure and create the corresponding directories and files.
 
 ## Features
 
-- Create directory and file structures from a string input.
-- Create directory and file structures from a text file.
+- Create directory and file structures from a string input via the GUI.
+- Create directory and file structures from a text file via the GUI.
 - Automatically handles indentation levels to determine the parent-child relationship between directories and files.
 
 ## Usage
@@ -13,83 +13,44 @@ This script allows you to create a directory and file structure based on a given
 ### Prerequisites
 
 - Python 3.x installed on your machine.
-
-### Structure Input Formats
-
-#### String Input
-
-You can provide the directory structure directly as a string within the script. This is useful for smaller structures.
-
-#### File Input
-
-You can also provide the directory structure in a text file. This is useful for larger structures. The file should contain the structure in a tree-like format, with indentation representing the directory hierarchy.
-
-### Example Structure
-
-Here is an example of a directory structure in a string format:
-
-media-tracker/
-backend/
-frontend/
-k8s/
-.github/
-workflows/
-ci-cd-pipeline.yml
-docker-compose.yml
-README.md
-
-
-And the same structure in a file named `structure.txt`:
-
-
-### Running the Script
-
-1. **Using String Input**
-
-   Edit the `structure` variable within the script to define your directory structure. Then run the script.
-
-   ```python
-   if __name__ == "__main__":
-       structure = """
-       media-tracker/
-           backend/
-           frontend/
-           k8s/
-           .github/
-               workflows/
-                   ci-cd-pipeline.yml
-           docker-compose.yml
-           README.md
-       """
-       create_structure(structure)
-    ```
-Execute the script:
-```bash
-python create_structure.py
+- PyQt5 library installed:
+```sh
+pip install PyQt5
 ```
-2. **Using File Input**
 
-   Save your directory structure in a file named structure.txt. Ensure the structure_file variable in the script points to this file. Then run the script.
-     ```python
-    if __name__ == "__main__":
-        structure_file = 'structure.txt'
-        create_structure_from_file(structure_file)
-     ```
-  Execute the script:
+## Running the Application
 
-  ```bash
-  python create_structure.py
-  ```
-### Script Explanation
-The script consists of two main functions:
+1. Starting the GUI
+To start the application, run the executable `create-directory-tool.exe`. Or from an ide, run the main.py script. This will launch the graphical user interface where you can select the root folder, input the directory structure as a string, or upload a text file with the structure. 
 
-#### create_structure(structure, root='.'):
+```bash
+python main.py
+```
 
-Parses the provided string to create directories and files.
-Uses indentation to determine the hierarchy.
+2. Using the GUI
+- Select the Root Folder
+- Input as String or Upload a Text File
 
-#### create_structure_from_file(file_path, root='.'):
+## Example Structure
+### String Input
 
-Reads the structure from a text file and creates directories and files.
-Uses indentation to determine the hierarchy.
-The main block of the script allows you to choose between using a string input or a file input to define your directory structure.
+```bash
+media-tracker/
+   backend/
+   frontend/
+   k8s/
+   .github/
+   workflows/
+      ci-cd-pipeline.yml
+      docker-compose.yml
+   README.md
+```
+
+## Script Explanation
+While the primary use of the application is through the GUI, the backend consists of two main functions:
+
+`create_structure(structure, root='.')`
+Parses the provided string to create directories and files. Uses indentation to determine the hierarchy.
+
+`create_structure_from_file(file_path, root='.')`
+Reads the structure from a text file and creates directories and files. Uses indentation to determine the hierarchy.
