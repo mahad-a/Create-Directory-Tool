@@ -1,23 +1,24 @@
 import os
 
 def create_structure(structure, root='.'):
+    # grab the passed string structure and prepare to build project
     lines = structure.strip().split('\n')
     stack = []
     current_indent = -1
 
-    for line in lines:
+    for line in lines: # for each line in the string (each file or directory)
         indent = len(line) - len(line.lstrip())
         name = line.strip()
         
-        # Determine if it's a directory or a file
+        # determine if it's a directory or a file
         is_directory = not any(ext in name for ext in ('.',))
         
-        # Adjust stack according to the current indentation
+        # adjust stack according to the current indentation
         while indent <= current_indent:
             stack.pop()
             current_indent -= 4
         
-        # Determine the current path
+        # determine the current path 
         current_path = os.path.join(root, *stack)
         target_path = os.path.join(current_path, name)
 
@@ -28,28 +29,29 @@ def create_structure(structure, root='.'):
         else:
             os.makedirs(current_path, exist_ok=True)
             with open(target_path, 'w') as f:
-                pass  # Create an empty file
+                pass  # create an empty file
 
+# same as create_structure function, except takes a textfile as input rather than string
 def create_structure_from_file(file_path, root='.'):
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r') as file: # parse the passed textfile
         lines = file.readlines()
     
     stack = []
     current_indent = -1
 
-    for line in lines:
+    for line in lines: # for each line in the textfile
         indent = len(line) - len(line.lstrip())
         name = line.strip()
         
-        # Determine if it's a directory or a file
+        # determine if it's a directory or a file
         is_directory = not any(ext in name for ext in ('.',))
         
-        # Adjust stack according to the current indentation
+        # adjust stack according to the current indentation
         while indent <= current_indent:
             stack.pop()
             current_indent -= 4
         
-        # Determine the current path
+        # determine the current path
         current_path = os.path.join(root, *stack)
         target_path = os.path.join(current_path, name)
 
@@ -60,5 +62,5 @@ def create_structure_from_file(file_path, root='.'):
         else:
             os.makedirs(current_path, exist_ok=True)
             with open(target_path, 'w') as f:
-                pass  # Create an empty file
+                pass  # create an empty file
 

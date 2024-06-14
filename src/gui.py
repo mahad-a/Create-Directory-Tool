@@ -7,14 +7,15 @@ class App(QWidget):
         super().__init__()
         self.title = 'Directory Structure Creator'
         self.initUI()
-        
+    
+    # initialize the UI
     def initUI(self):
         self.setWindowTitle(self.title)
         self.setFixedSize(800, 600)
         
         layout = QVBoxLayout()
         
-        # Root directory selection
+        # root directory selection
         self.root_dir_label = QLabel("Select root directory:")
         layout.addWidget(self.root_dir_label)
         
@@ -25,7 +26,7 @@ class App(QWidget):
         self.root_dir_path = QLineEdit(self)
         layout.addWidget(self.root_dir_path)
         
-        # Mode selection switch
+        # mode selection switch
         self.mode_switch_label = QLabel("Toggle for File Upload or Text Input")
         layout.addWidget(self.mode_switch_label)
         
@@ -33,39 +34,41 @@ class App(QWidget):
         self.mode_switch.clicked.connect(self.toggle_mode)
         layout.addWidget(self.mode_switch)
         
-        # Structure input
+        # structure input
         self.structure_label = QLabel("Enter structure:")
         layout.addWidget(self.structure_label)
         
         self.structure_text = QTextEdit(self)
         layout.addWidget(self.structure_text)
         
-        # Upload button
+        # upload button
         self.upload_button = QPushButton("Upload File")
         self.upload_button.clicked.connect(self.upload_file)
         layout.addWidget(self.upload_button)
         
-        # Create structure button
+        # create structure button
         self.create_button = QPushButton("Create Structure")
         self.create_button.clicked.connect(self.create_structure)
         layout.addWidget(self.create_button)
         
         self.setLayout(layout)
         
-        # Set initial mode to Text Input
+        # set initial mode to Text Input
         self.toggle_mode()
         
-    def browse_directory(self):
+    def browse_directory(self): # result of browse button
         dir_path = QFileDialog.getExistingDirectory(self, "Select Directory")
         if dir_path:
             self.root_dir_path.setText(dir_path)
     
-    def upload_file(self):
+    def upload_file(self): # result of upload button
+        # opens the file explorer to allow user to find their desired textfile
         file_path = QFileDialog.getOpenFileName(self, "Open File", "", "Text Files (*.txt)")[0]
         if file_path:
             self.file_path = file_path
     
-    def toggle_mode(self):
+    def toggle_mode(self): # toggle switch between the string input or upload textfile
+        # view toggle_switch.py for the implementation
         if self.mode_switch.isChecked():
             self.structure_label.hide()
             self.structure_text.hide()
@@ -82,7 +85,7 @@ class App(QWidget):
             QMessageBox.critical(self, "Error", "Please select a root directory.")
             return
         
-        try:
+        try: # check the current state of the toggle switch, whether we are taking a string or a textfile
             if self.mode_switch.isChecked():
                 if not hasattr(self, 'file_path') or not self.file_path:
                     QMessageBox.critical(self, "Error", "Please upload a file.")

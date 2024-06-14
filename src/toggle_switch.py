@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QPushButton, QSizePolicy
 
-
+# the toggle button between string input or textfile
 class ToggleSwitch(QPushButton):
     def __init__(self, parent=None):
         super().__init__(parent)
