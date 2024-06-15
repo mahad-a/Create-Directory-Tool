@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QTextEdit, QFileDialog, QMessageBox, QHBoxLayout, QSizePolicy
+from PyQt5.QtGui import QFont
 from toggle_switch import ToggleSwitch
 from create_project_structure import *
 
@@ -11,23 +12,31 @@ class App(QWidget):
     # initialize the UI
     def initUI(self):
         self.setWindowTitle(self.title)
-        self.setFixedSize(800, 600)
+        self.setFixedSize(1500, 1200)
+        
+        # Set a default font
+        font = QFont("Arial", 15)  # You can change the font family and size here
         
         layout = QVBoxLayout()
         
-        # root directory selection
+        # set font for labels
         self.root_dir_label = QLabel("Select root directory:")
+        self.root_dir_label.setFont(font)
         layout.addWidget(self.root_dir_label)
         
+        # browse file explorer button
         self.root_dir_button = QPushButton("Browse")
         self.root_dir_button.clicked.connect(self.browse_directory)
+        self.root_dir_button.setFont(font)
         layout.addWidget(self.root_dir_button)
         
         self.root_dir_path = QLineEdit(self)
+        self.root_dir_path.setFont(font)
         layout.addWidget(self.root_dir_path)
         
         # mode selection switch
         self.mode_switch_label = QLabel("Toggle for File Upload or Text Input")
+        self.mode_switch_label.setFont(font)
         layout.addWidget(self.mode_switch_label)
         
         self.mode_switch = ToggleSwitch(self)
@@ -36,19 +45,23 @@ class App(QWidget):
         
         # structure input
         self.structure_label = QLabel("Enter structure:")
+        self.structure_label.setFont(font)
         layout.addWidget(self.structure_label)
         
         self.structure_text = QTextEdit(self)
+        self.structure_text.setFont(font)
         layout.addWidget(self.structure_text)
         
         # upload button
         self.upload_button = QPushButton("Upload File")
         self.upload_button.clicked.connect(self.upload_file)
+        self.upload_button.setFont(font)
         layout.addWidget(self.upload_button)
         
         # create structure button
         self.create_button = QPushButton("Create Structure")
         self.create_button.clicked.connect(self.create_structure)
+        self.create_button.setFont(font)
         layout.addWidget(self.create_button)
         
         self.setLayout(layout)
