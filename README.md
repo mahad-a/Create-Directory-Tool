@@ -18,18 +18,28 @@ This application allows you to create a directory and file structure based on a 
 pip install PyQt5
 ```
 
+## Glossary | How File or Directory is Defined
+The lines within your uploaded textfile or inputted string must follow a certain design format:
+
+Type  | Format
+------------- | -------------
+File  | file.type (i.e main.py)
+Directory/Folder |  folder/ 
+File within Folder| indent then file.type | 
+
 ## Running the Application
 
 1. Starting the GUI
-To start the application, run the executable `create-directory-tool.exe`. Or from an ide, run the main.py script. This will launch the graphical user interface where you can select the root folder, input the directory structure as a string, or upload a text file with the structure. 
+   - To start the application, run the executable `create-directory-tool.exe`. 
+   - From an ide, run the main.py script. This will launch the graphical user interface where you can select the root folder, input the directory structure as a string, or upload a text file with the structure. 
 
-```bash
-python main.py
-```
+   ```bash
+   python main.py
+   ```
 
 2. Using the GUI
-- Select the Root Folder
-- Input as String or Upload a Text File
+   1. Select the Root Folder
+   2. Input as String or Upload a Text File
 
 ## Example Structure
 ### String Input
@@ -45,6 +55,9 @@ media-tracker/
       docker-compose.yml
    README.md
 ```
+
+### File Upload
+A template file `template.txt` is included in the repo for your own use. Structure your textfile to be similar or edit the template to meet your requirements/desires.
 
 ## Script Explanation
 While the primary use of the application is through the GUI, the backend consists of two main functions:
